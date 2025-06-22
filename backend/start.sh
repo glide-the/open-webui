@@ -65,4 +65,8 @@ if [ -n "$SPACE_ID" ]; then
   export WEBUI_URL=${SPACE_HOST}
 fi
 
+RAG_RERANKING_MODEL_TRUST_REMOTE_CODE=True \
+RAG_EMBEDDING_MODEL_TRUST_REMOTE_CODE=True \
+RAG_EMBEDDING_MODEL=/mnt/ceph/develop/jiawei/model_checkpoint/m3e-base \
+RAG_RERANKING_MODEL=/mnt/ceph/develop/jiawei/model_checkpoint/jina-reranker-v2-base-multilingual \
 WEBUI_SECRET_KEY="$WEBUI_SECRET_KEY" exec uvicorn open_webui.main:app --host "$HOST" --port "$PORT" --forwarded-allow-ips '*'

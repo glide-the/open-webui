@@ -1,0 +1,41 @@
+{
+    "version": "0.2.0",
+    "configurations": [
+      {
+        "name": "Debug WebUI (Uvicorn)",
+        "type": "python",
+        "request": "launch",
+        "module": "uvicorn",
+        "cwd": "${workspaceFolder}/backend",
+        "args": [
+          "open_webui.main:app",
+          "--host", "127.0.0.1",
+          "--port", "8080",
+          "--forwarded-allow-ips", "*",
+          "--reload"
+        ],
+        "env": {
+          "RAG_EMBEDDING_MODEL": "/mnt/ceph/develop/jiawei/model_checkpoint/m3e-base",
+          "RAG_RERANKING_MODEL": "/mnt/ceph/develop/jiawei/model_checkpoint/jina-reranker-v2-base-multilingual",
+          "RAG_EMBEDDING_MODEL_TRUST_REMOTE_CODE": "True",
+          "RAG_RERANKING_MODEL_TRUST_REMOTE_CODE": "True",
+          "PDF_EXTRACT_IMAGES": "True",
+          "WEBUI_SECRET_KEY": "ok6gFETChB2c8RRn",
+          "PORT": "8080", 
+        },
+        
+        "console": "integratedTerminal",
+        "justMyCode": false
+      },
+      {
+        "name": "Debug mypdfloader.py",
+        "type": "python",
+        "request": "launch",
+        "program": "${workspaceFolder}/backend/open_webui/retrieval/loaders/mypdfloader.py",
+        "console": "integratedTerminal",
+        "cwd": "${workspaceFolder}/backend",
+        "justMyCode": false
+      }
+    ]
+  }
+  
